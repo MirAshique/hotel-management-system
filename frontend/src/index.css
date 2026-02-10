@@ -1,0 +1,499 @@
+/* ================= HERO ================= */
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 90px);
+  background: url("/src/assets/gallery/hotel-main.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(2, 6, 23, 0.85),
+    rgba(2, 6, 23, 0.45)
+  );
+}
+
+.hero-content {
+  position: relative;
+  max-width: 700px;
+  padding: 0 24px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 56px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #e5e7eb;
+  margin-bottom: 36px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn.primary {
+  background: #2563eb;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.btn.primary:hover {
+  background: #1e40af;
+}
+
+.btn.outline {
+  border: 1px solid white;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 999px;
+}
+
+.btn.outline:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* ================= FEATURES ================= */
+
+.features-section {
+  padding: 80px 24px;
+  background: #f8fafc;
+}
+
+.features-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  background: white;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+}
+
+.feature-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+/* ================= GALLERY ================= */
+
+.home-gallery {
+  background: white;
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.gallery-main {
+  grid-column: span 3;
+}
+
+.gallery-item img,
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img,
+.gallery-main:hover img {
+  transform: scale(1.04);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-main {
+    grid-column: span 1;
+  }
+}
+/* ================= ROOM CARD FIX ================= */
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+/* Card container */
+.room-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* Image wrapper (IMPORTANT FIX) */
+.room-card-image {
+  position: relative;
+  height: 190px; /* 👈 FIXED HEIGHT */
+  overflow: hidden;
+}
+
+.room-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Price badge */
+.room-price-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  color: white;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+/* Card body */
+.room-card-body {
+  padding: 18px;
+}
+
+.room-card-body h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.room-card-desc {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* Footer */
+.room-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-capacity {
+  font-size: 14px;
+  color: #334155;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 640px) {
+  .room-card-image {
+    height: 160px;
+  }
+}
+/* ================= AUTH (LOGIN / REGISTER) ================= */
+
+.auth-page {
+  min-height: calc(100vh - 90px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      rgba(15, 23, 42, 0.55),
+      rgba(15, 23, 42, 0.55)
+    ),
+    url("/src/assets/gallery/hotel-main.png") center/cover no-repeat;
+  padding: 40px 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 36px 32px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+.auth-card h2 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.auth-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.auth-group label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #334155;
+}
+
+.auth-group input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+  outline: none;
+}
+
+.auth-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.auth-error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.auth-footer {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  color: #475569;
+}
+
+.auth-footer a {
+  margin-left: 6px;
+  color: #2563eb;
+  font-weight: 500;
+}
+/* ================= HERO FIX ================= */
+
+.hero {
+  min-height: calc(100vh - 90px);
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.hero h1 {
+  font-size: 64px;
+  margin-bottom: 10px;
+}
+
+.hero-location {
+  font-size: 16px;
+  color: #e5e7eb;
+  margin-bottom: 14px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #e5e7eb;
+  margin-bottom: 36px;
+}
+
+.hero-btn {
+  padding: 14px 26px;
+  font-size: 16px;
+}
+
+/* ================= FEATURES FIX ================= */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.feature-card {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  text-align: left;
+}
+
+.feature-card h3 {
+  margin-bottom: 10px;
+}
+
+/* ================= SECTION TITLES ================= */
+
+.section-title {
+  font-size: 38px;
+  margin-bottom: 30px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 42px;
+  }
+}
+/* ================= TESTIMONIALS ================= */
+
+.testimonials {
+  background: #f8fafc;
+  padding: 90px 0;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.testimonial-card .quote {
+  font-size: 60px;
+  color: #2563eb;
+  position: absolute;
+  top: -20px;
+  left: 20px;
+}
+
+.testimonial-card p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #334155;
+  margin-bottom: 18px;
+}
+
+.testimonial-card h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.avatar {
+  background: #e0e7ff;
+  border-radius: 50%;
+  padding: 6px;
+}
+/* ================= WHY CHOOSE US ================= */
+
+.home-why {
+  background: linear-gradient(135deg, #020617, #020617);
+  padding: 100px 0;
+  color: white;
+}
+
+.section-title.light {
+  color: white;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.stat-card span {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.stat-card h3 {
+  font-size: 42px;
+  margin: 0;
+}
+
+.stat-card p {
+  margin-top: 8px;
+  color: #cbd5f5;
+  font-size: 15px;
+}
