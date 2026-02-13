@@ -7,11 +7,11 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false); // 👈 Mobile toggle
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      setScrolled(window.scrollY > 40);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -27,14 +27,14 @@ const Navbar = () => {
   return (
     <header className={`navbar-wrapper ${scrolled ? "solid" : "glass"}`}>
       <nav className="navbar">
+
         {/* BRAND */}
         <Link to="/" className="navbar-brand">
-  <span className="brand-icon">👑</span>
-  <span className="brand-text">Crown Palace</span>
-</Link>
+          <span className="brand-crown">♛</span>
+          <span className="brand-text">Crown Palace</span>
+        </Link>
 
-
-        {/* HAMBURGER BUTTON */}
+        {/* HAMBURGER */}
         <div
           className={`hamburger ${menuOpen ? "active" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -46,35 +46,24 @@ const Navbar = () => {
 
         {/* LINKS */}
         <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
+
           <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>
             Home
           </Link>
 
-          <Link
-            to="/rooms"
-            className="nav-link"
-            onClick={() => setMenuOpen(false)}
-          >
+          <Link to="/rooms" className="nav-link" onClick={() => setMenuOpen(false)}>
             Rooms
           </Link>
 
           {user && (
-            <Link
-              to="/my-bookings"
-              className="nav-link"
-              onClick={() => setMenuOpen(false)}
-            >
+            <Link to="/my-bookings" className="nav-link" onClick={() => setMenuOpen(false)}>
               My Bookings
             </Link>
           )}
 
           {user?.role === "admin" && (
-            <Link
-              to="/admin"
-              className="nav-link admin-link"
-              onClick={() => setMenuOpen(false)}
-            >
-              Admin Panel
+            <Link to="/admin" className="nav-link admin-link" onClick={() => setMenuOpen(false)}>
+              Admin
             </Link>
           )}
 
@@ -84,18 +73,10 @@ const Navbar = () => {
             </button>
           ) : (
             <div className="auth-buttons">
-              <Link
-                to="/login"
-                className="login-btn"
-                onClick={() => setMenuOpen(false)}
-              >
+              <Link to="/login" className="login-btn" onClick={() => setMenuOpen(false)}>
                 Login
               </Link>
-              <Link
-                to="/register"
-                className="register-btn"
-                onClick={() => setMenuOpen(false)}
-              >
+              <Link to="/register" className="register-btn" onClick={() => setMenuOpen(false)}>
                 Register
               </Link>
             </div>
