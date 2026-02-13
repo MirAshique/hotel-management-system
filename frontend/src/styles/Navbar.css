@@ -128,3 +128,48 @@
 body {
   padding-top: 90px;
 }
+/* ================= MOBILE NAVBAR ================= */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #0f172a;
+  transition: all 0.3s ease;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 260px;
+    background: white;
+    flex-direction: column;
+    padding: 24px;
+    gap: 18px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transform: translateX(110%);
+    transition: transform 0.3s ease;
+  }
+
+  .navbar-links.open {
+    transform: translateX(0);
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
