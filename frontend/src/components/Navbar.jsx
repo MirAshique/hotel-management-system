@@ -29,9 +29,10 @@ const Navbar = () => {
       <nav className="navbar">
         {/* BRAND */}
         <Link to="/" className="navbar-brand">
-          <span className="brand-icon">🏨</span>
-          <span className="brand-text">Hotel</span>
-        </Link>
+  <span className="brand-icon">👑</span>
+  <span className="brand-text">Crown Palace</span>
+</Link>
+
 
         {/* HAMBURGER BUTTON */}
         <div
