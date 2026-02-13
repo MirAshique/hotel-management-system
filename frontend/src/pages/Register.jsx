@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext";
+import API from "../api/axios"; // ✅ IMPORTANT
 
 const Register = () => {
   const { login } = useContext(AuthContext);
@@ -19,18 +20,21 @@ const Register = () => {
     setLoading(true);
 
     try {
-      // Register user
-      await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
+      // ✅ Use API instead of fetch
+      await API.post("/auth/register", {
+        name,
+        email,
+        password,
       });
 
       // Auto-login after register
       await login(email, password);
       navigate("/");
     } catch (err) {
-      setError("Registration failed. Please try again.");
+      setError(
+        err.response?.data?.message ||
+          "Registration failed. Please try again."
+      );
     } finally {
       setLoading(false);
     }
