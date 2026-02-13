@@ -14,21 +14,21 @@ import upload from "../middleware/uploadMiddleware.js";
 
 const router = express.Router();
 
-// Public routes
+/* ================= PUBLIC ROUTES ================= */
 router.get("/", getRooms);
 router.get("/:id", getRoomById);
 
-// Admin CRUD routes
+/* ================= ADMIN CRUD ROUTES ================= */
 router.post("/", protect, authorizeRoles("admin"), createRoom);
 router.put("/:id", protect, authorizeRoles("admin"), updateRoom);
 router.delete("/:id", protect, authorizeRoles("admin"), deleteRoom);
 
-// ✅ IMAGE UPLOAD ROUTE (THIS WAS MISSING / BROKEN)
+/* ================= IMAGE UPLOAD ROUTE ================= */
 router.post(
   "/:id/images",
   protect,
   authorizeRoles("admin"),
-  upload.array("images", 5),
+  upload.array("images", 5), // max 5 images
   uploadRoomImages
 );
 

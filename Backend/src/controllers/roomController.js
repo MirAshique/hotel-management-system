@@ -1,37 +1,35 @@
 import asyncHandler from "express-async-handler";
 import Room from "../models/Room.js";
-import cloudinary from "../config/cloudinary.js";
 
 /* ================= CREATE ROOM ================= */
 export const createRoom = asyncHandler(async (req, res) => {
   const {
-  title,
-  description,
-  pricePerNight,
-  capacity,
-  roomType,
-  amenities = [],
-} = req.body;
-
-// normalize roomType
-const normalizedRoomType = roomType.toLowerCase();
+    title,
+    description,
+    pricePerNight,
+    capacity,
+    roomType,
+    amenities = [],
+  } = req.body;
 
   if (!title || !description || !pricePerNight || !capacity || !roomType) {
     res.status(400);
     throw new Error("All required fields must be provided");
   }
 
-  const room = await Room.create({
-  title,
-  description,
-  pricePerNight,
-  capacity,
-  roomType: normalizedRoomType,
-  amenities,
-  images: [],
-  isActive: true,
-});
+  // normalize roomType
+  const normalizedRoomType = roomType.toLowerCase();
 
+  const room = await Room.create({
+    title,
+    description,
+    pricePerNight,
+    capacity,
+    roomType: normalizedRoomType,
+    amenities,
+    images: [],
+    isActive: true,
+  });
 
   res.status(201).json({
     success: true,
@@ -71,9 +69,13 @@ export const updateRoom = asyncHandler(async (req, res) => {
   }
 
   Object.assign(room, req.body);
+
   const updatedRoom = await room.save();
 
-  res.json({ success: true, room: updatedRoom });
+  res.json({
+    success: true,
+    room: updatedRoom,
+  });
 });
 
 /* ================= DELETE ROOM ================= */
@@ -88,7 +90,10 @@ export const deleteRoom = asyncHandler(async (req, res) => {
   room.isActive = false;
   await room.save();
 
-  res.json({ success: true, message: "Room removed" });
+  res.json({
+    success: true,
+    message: "Room removed",
+  });
 });
 
 /* ================= UPLOAD IMAGES ================= */
@@ -105,18 +110,18 @@ export const uploadRoomImages = asyncHandler(async (req, res) => {
     throw new Error("No images uploaded");
   }
 
+  // Files are already uploaded to Cloudinary
   for (const file of req.files) {
-    const result = await cloudinary.uploader.upload(
-      `data:${file.mimetype};base64,${file.buffer.toString("base64")}`,
-      { folder: "hotel_rooms" }
-    );
-
     room.images.push({
-      public_id: result.public_id,
-      url: result.secure_url,
+      public_id: file.filename, // Cloudinary public_id
+      url: file.path,           // Cloudinary secure URL
     });
   }
 
   await room.save();
-  res.json({ success: true, images: room.images });
+
+  res.json({
+    success: true,
+    images: room.images,
+  });
 });
